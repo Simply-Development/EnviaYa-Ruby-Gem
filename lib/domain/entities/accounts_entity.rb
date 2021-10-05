@@ -1,6 +1,6 @@
 module Domain
   module Entities
-    class AccountEntity
+    class AccountsEntity
       attr_reader :enviaya_account,
                   :carrier_account
 
