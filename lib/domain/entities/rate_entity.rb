@@ -1,3 +1,5 @@
+require_relative './surcharge_entity.rb'
+
 module Domain
   module Entities
     class RateEntity
@@ -64,6 +66,17 @@ module Domain
         raise TypeError, "public_total_amount_currency expected a String or NilClass but got: #{public_total_amount_currency.class}" unless public_total_amount_currency.is_a?(String) || public_total_amount_currency.is_a?(NilClass)
         raise TypeError, "currency expected a String or NilClass but got: #{currency.class}" unless currency.is_a?(String) || currency.is_a?(NilClass)
 
+        unless surcharges.is_a?(NilClass)
+          raise TypeError, "surcharges expected an Array<SurchargeEntity> or NilClass but got: #{surcharges.class}" unless surcharges.is_a?(Array)
+
+          surcharges.each do |surcharge|
+            raise TypeError, "item in surcharges array expected to be a SurchargeEntity but got: #{surcharge.class}" unless surcharge.is_a?(::Domain::Entities::SurchargeEntity)
+          end
+        end
+
+        raise TypeError, "service_terms expected a String or NilClass but got: #{service_terms.class}" unless service_terms.is_a?(String) || service_terms.is_a?(NilClass)
+        raise TypeError, "enviaya_service_name expected a String or NilClass but got: #{enviaya_service_name.class}" unless enviaya_service_name.is_a?(String) || enviaya_service_name.is_a?(NilClass)
+        raise TypeError, "enviaya_service_code expected a String or NilClass but got: #{enviaya_service_code.class}" unless enviaya_service_code.is_a?(String) || enviaya_service_code.is_a?(NilClass)
 
         @id = id
         @date = date

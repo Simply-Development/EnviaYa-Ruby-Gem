@@ -1,4 +1,5 @@
 require_relative './parcel_entity.rb'
+require_relative './rate_entity.rb'
 require_relative '../value_objects/label_format_value_object.rb'
 require_relative '../vale_objects/label_file_type_value_object.rb'
 
@@ -65,6 +66,8 @@ module Domain
         raise TypeError, "label_format expected a LabelFormatValueObject or NilClass but got: #{label_format.class}" unless label_format.is_a?(::Domain::ValueObjects::LabelFormatValueObject) || label_format.is_a?(NilClass)
         raise TypeError, "label_file_type expected a LabelFileTypeValueObject or NilClass but got: #{label_file_type.class}" unless label_file_type.is_a?(::Domain::ValueObjects::LabelFileTypeValueObject) || label_file_type.is_a?(NilClass)
         raise TypeError, "label_url expected a String or NilClass but got: #{label_url.class}" unless label_url.is_a?(String) || label_url.is_a?(NilClass)
+        raise TypeError, "rate expected a RateEntity or NilClass but got: #{rate.class}" unless rate.is_a?(::Domain::Entities::RateEntity) || rate.is_a?(NilClass)
+        
 
         @shipment_type = shipment_type
         @parcels = parcels
