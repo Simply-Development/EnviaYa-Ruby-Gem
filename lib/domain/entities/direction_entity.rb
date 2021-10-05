@@ -42,7 +42,7 @@ module Domain
         raise TypeError, "country_code expected a String but got: #{country_code.class}" unless country_code.is_a?(String)
         raise TypeError, "phone expected a String but got: #{phone.class}" unless phone.is_a?(String)
         raise TypeError, "email expected a String or NilClass but got: #{email.class}" unless email.is_a?(String) || email.is_a?(NilClass)
-    
+        
         @full_name = full_name
         @company = company
         @direction_1 = direction_1

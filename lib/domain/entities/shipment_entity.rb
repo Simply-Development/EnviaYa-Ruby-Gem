@@ -1,4 +1,6 @@
 require_relative './parcel_entity.rb'
+require_relative '../value_objects/label_format_value_object.rb'
+require_relative '../vale_objects/label_file_type_value_object.rb'
 
 module Domain
   module Entities
@@ -53,24 +55,33 @@ module Domain
         raise TypeError, "insured_value expected a Float but got: #{insured_value.class}" unless insured_value.class.is_a?(Float) || insured_value.is_a?(NilClass)
         raise TypeError, "insured_value_currency expected a String but got: #{insured_value_currency.class}" if insured_value && !insured_value_currency.is_a?(String)
         raise TypeError, "content expected a String but got: #{content.class}" unless content.is_a?(String) || content.is_a?(NilClass)
+        raise TypeError, "shipment_date expected a Date or NilClass but got: #{shipment_date.class}" unless shipment_date.is_a?(Date) || shipment_date.is_a?(NilClass)
+        raise TypeError, "carrier expected a String or NilClass but got: #{carrier.class}" unless carrier.is_a?(String) || carrier.is_a?(NilClass)
+        raise TypeError, "carrier_service_code expected a String or NilClass but got: #{carrier_service_code.class}" unless carrier_service_code.is_a?(String) || carrier_service_code.is_a?(NilClass)
+        raise TypeError, "enviaya_service_code expected a String or NilClass but got: #{enviaya_service_code.class}" unless enviaya_service_code.is_a?(String) || enviaya_service_code.is_a?(NilClass)
+        raise TypeError, "enviaya_shipment_number expected a String or NilClass but got: #{enviaya_shipment_number.class}" unless enviaya_shipment_number.is_a?(String) || enviaya_shipment_number.is_a?(NilClass)
+        raise TypeError, "carrier_shipment_number expected a String or NilClass but got: #{carrier_shipment_number.class}" unless carrier_shipment_number.is_a?(String) || carrier_shipment_number.is_a?(NilClass)
+        raise TypeError, "label expected a String or NilClass but got: #{label.class}" unless label.is_a?(String) || label.is_a?(NilClass)
+        raise TypeError, "label_format expected a LabelFormatValueObject or NilClass but got: #{label_format.class}" unless label_format.is_a?(::Domain::ValueObjects::LabelFormatValueObject) || label_format.is_a?(NilClass)
+        raise TypeError, "label_file_type expected a LabelFileTypeValueObject or NilClass but got: #{label_file_type.class}" unless label_file_type.is_a?(::Domain::ValueObjects::LabelFileTypeValueObject) || label_file_type.is_a?(NilClass)
+        raise TypeError, "label_url expected a String or NilClass but got: #{label_url.class}" unless label_url.is_a?(String) || label_url.is_a?(NilClass)
 
-
-        self.shipment_type = shipment_type
-        self.parcels = parcels
-        self.insured_value = insured_value
-        self.insured_value_currency = insured_value_currency
-        self.content = content
-        self.shipment_date = shipment_date
-        self.carrier = carrier
-        self.carrier_service_code = carrier_service_code
-        self.enviaya_service_code = enviaya_service_code
-        self.carrier_shipment_number = carrier_shipment_number
-        self.label = label
-        self.label_format = label_format
-        self.label_file_type = label_file_type
-        self.label_url = label_url
-        self.rate = rate
-        self.accounts = accounts
+        @shipment_type = shipment_type
+        @parcels = parcels
+        @insured_value = insured_value
+        @insured_value_currency = insured_value_currency
+        @content = content
+        @shipment_date = shipment_date
+        @carrier = carrier
+        @carrier_service_code = carrier_service_code
+        @enviaya_service_code = enviaya_service_code
+        @carrier_shipment_number = carrier_shipment_number
+        @label = label
+        @label_format = label_format
+        @label_file_type = label_file_type
+        @label_url = label_url
+        @rate = rate
+        @accounts = accounts
       end
     end
   end
