@@ -9,6 +9,10 @@ module Shared
   
           @value = weight_unit
         end
+
+        def to_s
+          @value
+        end
       end
     end
   end

@@ -9,6 +9,10 @@ module Shared
   
           @value = dimension_unit
         end
+
+        def to_s
+          @value
+        end
       end
     end
   end

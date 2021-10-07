@@ -57,6 +57,23 @@ module Shared
           @phone = phone
           @email = email
         end
+
+        def to_hash
+          {
+            full_name: @full_name,
+            company: @company,
+            direction_1: @direction_1,
+            direction_2: @direction_2,
+            postal_code: @postal_code.to_s,
+            neighborhood: @neighborhood,
+            district: @district,
+            city: @city,
+            state_code: @state_code,
+            country_code: @country_code,
+            phone: @phone,
+            email: @email
+          }
+        end
       end    
     end
   end

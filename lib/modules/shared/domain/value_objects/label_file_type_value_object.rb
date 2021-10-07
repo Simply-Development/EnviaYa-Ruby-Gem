@@ -9,6 +9,10 @@ module Shared
   
           @value = label_file_type
         end
+
+        def to_s
+          @value
+        end
       end
     end
   end

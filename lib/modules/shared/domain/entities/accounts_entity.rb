@@ -15,6 +15,13 @@ module Shared
           @enviaya_account = enviaya_account
           @carrier_account = carrier_account
         end
+
+        def to_hash
+          {
+            enviaya_account: @enviaya_account,
+            carrier_account: @carrier_account
+          }
+        end
       end
     end
   end

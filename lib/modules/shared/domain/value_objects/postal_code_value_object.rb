@@ -9,6 +9,10 @@ module Shared
       
           @value = postal_code
         end
+
+        def to_s
+          @value
+        end
       end
     end
   end
