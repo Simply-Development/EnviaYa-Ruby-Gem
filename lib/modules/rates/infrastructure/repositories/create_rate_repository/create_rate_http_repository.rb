@@ -1,19 +1,18 @@
 require 'json'
 require 'net/http'
 require 'uri'
+require_relative '../../../../shared/infrastructure/connectors/http_connector/http_net_connector.rb'
 require_relative '../../../domain/repositories/create_rate_repository.rb'
 require_relative '../../../domain/dtos/create_rate_dto.rb'
-require_relative '../../../../shared/domain/connectors/http_connector.rb'
+require_relative '../../../../shared/domain/value_objects/http_method_value_object.rb'
 
 module Rates
   module Infrastructure
     module Repositories
       module CreateRateRepository
         class CreateRateHttpRepository < ::Rates::Domain::Repositories::CreateRateRepository
-          def initialize(http_connector:)
-            raise TypeError, "http_connector expected HttpConnector but got: #{http_connector.class}" unless http_connector.is_a?(::Shared::Domain::Connectors::HttpConnector)
-
-            @http_connector = http_connector
+          def initialize
+            @http_connector = ::Shared::Infrastructure::Connectors::HttpConnector::HttpNetConnector.new
           end
 
           def execute(create_rate_dto)
