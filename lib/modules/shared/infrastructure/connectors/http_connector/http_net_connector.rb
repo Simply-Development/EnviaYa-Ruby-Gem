@@ -18,7 +18,7 @@ module Shared
             when 'POST'
               return Net::HTTP.post(uri, body.to_json, {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer '
+                'Authorization': "Bearer #{EnviaYa.api_key}"
               })
             end
           end
