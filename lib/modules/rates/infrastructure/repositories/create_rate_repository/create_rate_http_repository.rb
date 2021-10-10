@@ -19,7 +19,8 @@ module EnviaYa
             def execute(create_rate_dto)
               raise TypeError, "create_rate_repository expected a CreateRateDto but got: #{create_rate_dto.class}" unless create_rate_dto.is_a?(::EnviaYa::Rates::Domain::Dtos::CreateRateDto)
   
-              @http_connector.execute(URI('https://enviaya.com.mx/api/v1/rates'), method: ::EnviaYa::Shared::Domain::ValueObjects::HttpMethodValueObject.new('POST'), body: create_rate_dto.to_hash)
+              response = @http_connector.execute(URI('https://enviaya.com.mx/api/v1/rates'), method: ::EnviaYa::Shared::Domain::ValueObjects::HttpMethodValueObject.new('POST'), body: create_rate_dto.to_hash)
+              JSON.parse(response.body, symbolize_names: true)
             end
           end
         end

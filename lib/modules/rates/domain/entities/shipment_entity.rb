@@ -1,13 +1,13 @@
 require 'date'
-require_relative './parcel_entity.rb'
-require_relative './rate_entity.rb'
-require_relative './accounts_entity.rb'
-require_relative '../value_objects/label_format_value_object.rb'
-require_relative '../value_objects/label_file_type_value_object.rb'
-require_relative '../value_objects/shipment_type_value_object.rb'
+require_relative '../../../shared/domain/entities/parcel_entity.rb'
+require_relative '../../../shared/domain/entities/rate_entity.rb'
+require_relative '../../../shared/domain/entities/accounts_entity.rb'
+require_relative '../../../shared/domain/value_objects/label_format_value_object.rb'
+require_relative '../../../shared/domain/value_objects/label_file_type_value_object.rb'
+require_relative '../../../shared/domain/value_objects/shipment_type_value_object.rb'
 
 module EnviaYa
-  module Shared
+  module Rates
     module Domain
       module Entities
         class ShipmentEntity
@@ -30,7 +30,7 @@ module EnviaYa
                       :accounts
         
           def initialize(
-            shipment_type: nil,
+            shipment_type:,
             parcels:,
             insured_value: nil,
             insured_value_currency: nil,
@@ -48,11 +48,9 @@ module EnviaYa
             rate: nil,
             accounts: nil
           )
-            unless shipment_type.is_a?(::EnviaYa::Shared::Domain::ValueObjects::ShipmentTypeValueObject) || shipment_type.is_a?(NilClass)
-              raise TypeError, "shipment_type expected a ShipmentTypeValueObject but got: #{shipment_type.class}"
-            end
-    
+            raise TypeError, "shipment_type expected a ShipmentTypeValueObject but got: #{shipment_type.class}" unless shipment_type.is_a?(::EnviaYa::Shared::Domain::ValueObjects::ShipmentTypeValueObject)
             raise TypeError, "parcels expected an Array<ParcelEntity> but got: #{parcels.class}" unless parcels.is_a?(Array)
+            raise ArgumentError, 'parcels expected to have at least one element' if parcels.length.zero?
     
             parcels.each do |parcel|
               raise TypeError, "item in parcels array expected to be a ParcelEntity but got: #{parcel.class}" unless parcel.is_a?(::EnviaYa::Shared::Domain::Entities::ParcelEntity)
