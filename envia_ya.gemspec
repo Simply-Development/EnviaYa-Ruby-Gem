@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'envia_ya'
-  s.version = '0.0.1'
+  s.version = '0.0.3'
   s.summary = 'Ruby implementation of EnviaYa! shipping service.'
   s.authors = ['Simply Development', 'Jorge Castillo']
   s.email = ['hello@simply-development.com', 'j@simply-development.com']

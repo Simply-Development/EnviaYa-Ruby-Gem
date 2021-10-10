@@ -11,15 +11,15 @@ module EnviaYa
         module HttpConnector
           class HttpNetConnector < ::EnviaYa::Shared::Domain::Connectors::HttpConnector
             def execute(uri, method: ::EnviaYa::Shared::Domain::ValueObjects::HttpMethodValueObject.new('GET'), body: {})
+              raise StandardError, "api_key has not been added. Please added via EnviaYa::Config.api_key = 'YOUR_API_KEY'" unless EnviaYa::Config.api_key
               raise TypeError, "uri expected URI but got: #{uri.class}" unless uri.is_a?(URI)
               raise TypeError, "method expected HttpMethodValueObject but got: #{method.class}" unless method.is_a?(::EnviaYa::Shared::Domain::ValueObjects::HttpMethodValueObject)
               raise TypeError, "body expected Hash but got: #{body.class}" unless body.is_a?(Hash)
   
               case method.to_s
               when 'POST'
-                return Net::HTTP.post(uri, body.to_json, {
-                  'Content-Type': 'application/json',
-                  'Authorization': "Bearer #{EnviaYa::Config.api_key}"
+                return Net::HTTP.post(URI(uri.to_s.concat("?api_key=#{EnviaYa::Config.api_key}")), body.to_json, {
+                  'Content-Type': 'application/json'
                 })
               end
             end
