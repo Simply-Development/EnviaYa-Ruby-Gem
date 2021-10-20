@@ -1,16 +1,19 @@
 Gem::Specification.new do |s|
   s.name = 'envia_ya'
-  s.version = '0.0.4'
+  s.version = '0.0.5'
   s.summary = 'Ruby implementation of EnviaYa! shipping service.'
   s.authors = ['Simply Development', 'Jorge Castillo']
   s.email = ['hello@simply-development.com', 'j@simply-development.com']
   s.license = 'MIT'
   s.post_install_message = 'Developed with 🧡 by Simply Development'
+  s.homepage = 'https://github.com/Simply-Development/EnviaYa-Ruby-Gem'
+  s.extra_rdoc_files = ['README']
   s.files = [
     'lib/envia_ya.rb',
     # Infrastructure
     'lib/modules/shared/infrastructure/connectors/http_connector/http_net_connector.rb',
-    'lib/modules/rates/infrastructure/repositories/create_rate_repository/create_rate_http_repository.rb',
+    'lib/modules/rates/infrastructure/repositories/rates_dummy_repository.rb',
+    'lib/modules/rates/infrastructure/repositories/rates_http_repository.rb',
     # Application
     'lib/modules/rates/application/commands/create_rate_command.rb',
     # Domain
@@ -28,7 +31,7 @@ Gem::Specification.new do |s|
     'lib/modules/shared/domain/value_objects/label_file_type_value_object.rb',
     'lib/modules/shared/domain/value_objects/shipment_type_value_object.rb',
     'lib/modules/rates/domain/dtos/create_rate_dto.rb',
-    'lib/modules/rates/domain/repositories/create_rate_repository.rb',
+    'lib/modules/rates/domain/repositories/rates_repository.rb',
     'lib/modules/rates/domain/entities/shipment_entity.rb',
     'lib/modules/rates/domain/entities/direction_entity.rb'
   ]

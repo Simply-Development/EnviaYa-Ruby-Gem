@@ -4,8 +4,8 @@ module EnviaYa
   module Rates
     module Domain
       module Repositories
-        class CreateRateRepository
-          def execute(create_rate_dto)
+        class RatesRepository
+          def create(create_rate_dto)
             raise NotImplementedError, "method not implemented yet"
           end
         end
