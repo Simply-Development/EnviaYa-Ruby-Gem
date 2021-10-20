@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.license = 'MIT'
   s.post_install_message = 'Developed with 🧡 by Simply Development'
   s.homepage = 'https://github.com/Simply-Development/EnviaYa-Ruby-Gem'
-  s.extra_rdoc_files = ['README']
+  s.extra_rdoc_files = ['README.md']
   s.files = [
     'lib/envia_ya.rb',
     # Infrastructure
