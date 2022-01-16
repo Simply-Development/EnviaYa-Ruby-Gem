@@ -1,11 +1,8 @@
 require 'singleton'
-require_relative './modules/rates/infrastructure/repositories/rates_http_repository.rb'
-require_relative './modules/rates/application/commands/create_rate_command.rb'
+require_relative './modules/rates/rates'
+require_relative './modules/shared/shared'
 
 module EnviaYa
-  include Rates::Infrastructure::Repositories
-  include Rates::Application::Commands
-
   class Config
     include Singleton
 

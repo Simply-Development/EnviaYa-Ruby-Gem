@@ -11,7 +11,7 @@ module EnviaYa
             @value = weight_unit
           end
   
-          def to_s
+          def value
             @value
           end
         end

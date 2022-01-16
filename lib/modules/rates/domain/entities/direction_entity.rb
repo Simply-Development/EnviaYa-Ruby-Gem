@@ -32,18 +32,53 @@ module EnviaYa
             phone: nil,
             email: nil
           )
-            raise TypeError, "full_name expected a String or NilClass but got: #{full_name.class}" unless full_name.is_a?(String) || full_name.is_a?(NilClass)
-            raise TypeError, "company expected a String or NilClass but got: #{company.class}" unless company.is_a?(String) || company.is_a?(NilClass)
-            raise TypeError, "direction_1 expected a String or NilClass but got: #{direction_1.class}" unless direction_1.is_a?(String) || direction_1.is_a?(NilClass)
-            raise TypeError, "direction_1 expected a String or NilClass but got: #{direction_2.class}" unless direction_2.is_a?(String) || direction_2.is_a?(NilClass)
-            raise TypeError, "postal_code expected a PostalCodeValueObject but got: #{postal_code.class}" unless postal_code.is_a?(::EnviaYa::Shared::Domain::ValueObjects::PostalCodeValueObject)
-            raise TypeError, "neighborhood expected a String or NilClass but got: #{neighborhood.class}" unless neighborhood.is_a?(String) || neighborhood.is_a?(NilClass)
-            raise TypeError, "district expected a String or NilClass but got: #{district.class}" unless district.is_a?(String) || district.is_a?(NilClass)
-            raise TypeError, "city expected a String or NilClass but got: #{city.class}" unless city.is_a?(String) || city.is_a?(NilClass)
-            raise TypeError, "state_code expected a String or NilClass but got: #{state_code.class}" unless state_code.is_a?(String) || state_code.is_a?(NilClass)
-            raise TypeError, "country_code expected a String but got: #{country_code.class}" unless country_code.is_a?(String)
-            raise TypeError, "phone expected a String or NilClass but got: #{phone.class}" unless phone.is_a?(String) || phone.is_a?(NilClass)
-            raise TypeError, "email expected a String or NilClass but got: #{email.class}" unless email.is_a?(String) || email.is_a?(NilClass)
+            unless full_name.is_a?(String) || full_name.is_a?(NilClass)
+              raise TypeError, "full_name expected a String or NilClass but got: #{full_name.class}"
+            end
+
+            unless company.is_a?(String) || company.is_a?(NilClass)
+              raise TypeError, "company expected a String or NilClass but got: #{company.class}"
+            end
+
+            unless direction_1.is_a?(String) || direction_1.is_a?(NilClass)
+              raise TypeError, "direction_1 expected a String or NilClass but got: #{direction_1.class}"
+            end
+
+            unless direction_2.is_a?(String) || direction_2.is_a?(NilClass)
+              raise TypeError, "direction_1 expected a String or NilClass but got: #{direction_2.class}"
+            end
+
+            unless postal_code.is_a?(::EnviaYa::Shared::Domain::ValueObjects::PostalCodeValueObject)
+              raise TypeError, "postal_code expected a PostalCodeValueObject but got: #{postal_code.class}"
+            end
+
+            unless neighborhood.is_a?(String) || neighborhood.is_a?(NilClass)
+              raise TypeError, "neighborhood expected a String or NilClass but got: #{neighborhood.class}"
+            end
+
+            unless district.is_a?(String) || district.is_a?(NilClass)
+              raise TypeError, "district expected a String or NilClass but got: #{district.class}"
+            end
+
+            unless city.is_a?(String) || city.is_a?(NilClass)
+              raise TypeError, "city expected a String or NilClass but got: #{city.class}"
+            end
+
+            unless state_code.is_a?(String) || state_code.is_a?(NilClass)
+              raise TypeError, "state_code expected a String or NilClass but got: #{state_code.class}"
+            end
+
+            unless country_code.is_a?(String)
+              raise TypeError, "country_code expected a String but got: #{country_code.class}"
+            end
+
+            unless phone.is_a?(String) || phone.is_a?(NilClass)
+              raise TypeError, "phone expected a String or NilClass but got: #{phone.class}"
+            end
+
+            unless email.is_a?(String) || email.is_a?(NilClass)
+              raise TypeError, "email expected a String or NilClass but got: #{email.class}"
+            end
             
             @full_name = full_name
             @company = company
@@ -59,13 +94,13 @@ module EnviaYa
             @email = email
           end
   
-          def to_hash
+          def to_json
             {
               full_name: @full_name,
               company: @company,
               direction_1: @direction_1,
               direction_2: @direction_2,
-              postal_code: @postal_code.to_s,
+              postal_code: @postal_code.value,
               neighborhood: @neighborhood,
               district: @district,
               city: @city,

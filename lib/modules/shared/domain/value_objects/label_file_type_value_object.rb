@@ -11,7 +11,7 @@ module EnviaYa
             @value = label_file_type
           end
   
-          def to_s
+          def value
             @value
           end
         end

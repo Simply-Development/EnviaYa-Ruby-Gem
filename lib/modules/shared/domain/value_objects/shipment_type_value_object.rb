@@ -11,7 +11,7 @@ module EnviaYa
             @value = shipment_type
           end
   
-          def to_s
+          def value
             @value
           end
         end

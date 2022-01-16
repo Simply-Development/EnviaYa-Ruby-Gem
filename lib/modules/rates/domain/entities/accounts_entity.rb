@@ -1,5 +1,5 @@
 module EnviaYa
-  module Shared
+  module Rates
     module Domain
       module Entities
         class AccountsEntity
@@ -10,14 +10,19 @@ module EnviaYa
             enviaya_account: nil,
             carrier_account: nil
           )
-            raise TypeError, "enviaya_account expected a String or NilClass but got: #{enviaya_account.class}" unless enviaya_account.is_a?(String) || enviaya_account.is_a?(NilClass)
-            raise TypeError, "carrier_account expected a String or NilClass but got: #{carrier_account.class}" unless carrier_account.is_a?(String) || carrier_account.is_a?(NilClass)
+            unless enviaya_account.is_a?(String) || enviaya_account.is_a?(NilClass)
+              raise TypeError, "enviaya_account expected a String or NilClass but got: #{enviaya_account.class}"
+            end
+
+            unless carrier_account.is_a?(String) || carrier_account.is_a?(NilClass)
+              raise TypeError, "carrier_account expected a String or NilClass but got: #{carrier_account.class}"
+            end
     
             @enviaya_account = enviaya_account
             @carrier_account = carrier_account
           end
   
-          def to_hash
+          def to_json
             {
               enviaya_account: @enviaya_account,
               carrier_account: @carrier_account

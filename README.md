@@ -31,8 +31,8 @@ EnviaYa::Config.api_key = YOUR_API_KEY
 
 ```ruby
 repository = EnviaYa::Rates::Infrastructure::Repositories::RatesHttpRepository.new
-command = EnviaYa::Rates::Application::Commands::CreateRateCommand.new(repository: repository)
-dto = EnviaYa::Rates::Domain::Dtos::CreateRateDto.new(
+command = EnviaYa::Rates::Application::Commands::CreateRateCommand.new(rates_repository: repository)
+dto = EnviaYa::Rates::Domain::DataTransferObjects::CreateRateDto.new(
   origin_direction: EnviaYa::Rates::Domain::Entities::DirectionEntity.new(
     postal_code: EnviaYa::Shared::Domain::ValueObjects::PostalCodeValueObject.new('68050'),
     country_code: 'MX'
@@ -44,7 +44,7 @@ dto = EnviaYa::Rates::Domain::Dtos::CreateRateDto.new(
   shipment: EnviaYa::Rates::Domain::Entities::ShipmentEntity.new(
     shipment_type: EnviaYa::Shared::Domain::ValueObjects::ShipmentTypeValueObject.new('Package'),
     parcels: [
-      EnviaYa::Shared::Domain::Entities::ParcelEntity.new(
+      EnviaYa::Rates::Domain::Entities::ParcelEntity.new(
         quantity: 1,
         weight: 1.0,
         weight_unit: EnviaYa::Shared::Domain::ValueObjects::WeightUnitValueObject.new('kg'),

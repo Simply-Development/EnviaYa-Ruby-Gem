@@ -11,7 +11,7 @@ module EnviaYa
             @value = postal_code
           end
   
-          def to_s
+          def value
             @value
           end
         end

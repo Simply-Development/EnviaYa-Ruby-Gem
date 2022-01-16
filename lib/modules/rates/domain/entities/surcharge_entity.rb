@@ -1,5 +1,5 @@
 module EnviaYa
-  module Shared
+  module Rates
     module Domain
       module Entities
         class SurchargeEntity

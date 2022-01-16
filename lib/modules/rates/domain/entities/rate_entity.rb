@@ -1,7 +1,7 @@
 require_relative './surcharge_entity.rb'
 
 module EnviaYa
-  module Shared
+  module Rates
     module Domain
       module Entities
         class RateEntity
@@ -72,7 +72,7 @@ module EnviaYa
               raise TypeError, "surcharges expected an Array<SurchargeEntity> or NilClass but got: #{surcharges.class}" unless surcharges.is_a?(Array)
     
               surcharges.each do |surcharge|
-                raise TypeError, "item in surcharges array expected to be a SurchargeEntity but got: #{surcharge.class}" unless surcharge.is_a?(::EnviaYa::Shared::Domain::Entities::SurchargeEntity)
+                raise TypeError, "item in surcharges array expected to be a SurchargeEntity but got: #{surcharge.class}" unless surcharge.is_a?(::EnviaYa::Rates::Domain::Entities::SurchargeEntity)
               end
             end
     

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'envia_ya'
-  s.version = '0.0.5'
+  s.version = '0.0.6'
   s.summary = 'Ruby implementation of EnviaYa! shipping service.'
   s.authors = ['Simply Development', 'Jorge Castillo']
   s.email = ['hello@simply-development.com', 'j@simply-development.com']
@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
     'lib/modules/shared/domain/value_objects/label_format_value_object.rb',
     'lib/modules/shared/domain/value_objects/label_file_type_value_object.rb',
     'lib/modules/shared/domain/value_objects/shipment_type_value_object.rb',
-    'lib/modules/rates/domain/dtos/create_rate_dto.rb',
+    'lib/modules/rates/domain/data_transfer_objects/create_rate_dto.rb',
     'lib/modules/rates/domain/repositories/rates_repository.rb',
     'lib/modules/rates/domain/entities/shipment_entity.rb',
     'lib/modules/rates/domain/entities/direction_entity.rb'

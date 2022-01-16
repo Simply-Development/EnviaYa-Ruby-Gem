@@ -11,7 +11,7 @@ module EnviaYa
             @value = dimension_unit
           end
   
-          def to_s
+          def value
             @value
           end
         end

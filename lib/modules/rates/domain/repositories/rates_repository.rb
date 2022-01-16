@@ -1,4 +1,4 @@
-require_relative '../dtos/create_rate_dto.rb'
+require_relative '../data_transfer_objects/create_rate_dto.rb'
 
 module EnviaYa
   module Rates

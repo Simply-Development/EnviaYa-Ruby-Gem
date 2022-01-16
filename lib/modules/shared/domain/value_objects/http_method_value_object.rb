@@ -11,7 +11,7 @@ module EnviaYa
             @value = http_method
           end
   
-          def to_s
+          def value
             @value
           end
         end
